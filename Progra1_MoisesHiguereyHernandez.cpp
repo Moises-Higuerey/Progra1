@@ -627,9 +627,9 @@ void menu_cliente(string cedula, int descuento){
 					if(resultado=="y"){
 						respuesta=true;
 					}
-				}
-				if(!respuesta){
+					if(!respuesta){
 					return menu_cliente(cedula,descuento);
+					}
 				}
 				else{
 					if(cantidad<=0){
@@ -794,7 +794,7 @@ void menu_reportes(string cedula){
 	
 	if(ultimoProductoModificado!=""){
 		nombre = split(ultimoProductoModificado).getPrimero()->getSiguiente()->getSiguiente()->getValor();
-		codigo = split(aux->getValor()).getPrimero()->getSiguiente()->getValor();
+		codigo = split(ultimoProductoModificado).getPrimero()->getSiguiente()->getValor();
 		cout << "Nombre: " << nombre << endl;
 		cout << "Codigo: " << codigo << endl;
 	}
@@ -819,7 +819,7 @@ void menu_reportes(string cedula){
 			else{
 				string cantidadPActual = split(productoMasVendido).getPrimero()->getSiguiente()->getSiguiente()->getSiguiente()->getValor();
 				cantidad = split(aux->getValor()).getPrimero()->getSiguiente()->getSiguiente()->getSiguiente()->getValor();
-				if(cantidadPActual>cantidad){
+				if(cantidadPActual<cantidad){
 					productoMasVendido = aux->getValor();
 				}
 			}
@@ -916,6 +916,7 @@ void menu_reportes(string cedula){
 		cout << "No se ha realizado ninguna compra" << endl;
 	}
 	cout << "9. Super mas visitado" << endl;
+	superMasVisitado="";
 	aux = visitasSuper.getPrimero();
 	if(aux!=NULL){
 		while(aux!=NULL){
@@ -939,6 +940,7 @@ void menu_reportes(string cedula){
 		cout << "No se ha visitado ningun super" << endl;
 	}
 	cout << "10. Super menos visitado" << endl;
+	superMenosVisitado="";
 	aux = visitasSuper.getPrimero();
 	if(aux!=NULL){
 		while(aux!=NULL){
@@ -978,7 +980,7 @@ void menu_reportes(string cedula){
 		}
 		codigo = split(administradorMasTrabajo).getPrimero()->getValor();
 		cantidad = split(administradorMasTrabajo).getPrimero()->getSiguiente()->getValor();
-		cout << "Administrado: " << codigo << endl;
+		cout << "Administrador: " << codigo << endl;
 		cout << "Cantidad de Trabajo: " << cantidad << endl;
 	}
 	else{
